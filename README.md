@@ -31,3 +31,7 @@ Please refer to the individual files for the code.
 ## Disclaimer
 
 This guide shows how resource tagging can be done at no additional cost. However, depending on your organization's needs and resources, you might opt for paid solutions like the ITOM module from ServiceNow.
+
+### Blog Post
+
+The full blog can be read on [https://khenry.substack.com/p/TagAutomation](my substack).
