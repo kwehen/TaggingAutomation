@@ -37,4 +37,4 @@ This guide shows how resource tagging can be done at no additional cost. However
 
 ### Blog Post
 
-The full blog can be read on [my substack](https://khenry.substack.com/p/TagAutomation).
+The full blog can be read on [my substack](https://khenry.substack.com/p/tagautomation).
