@@ -1,5 +1,8 @@
 # Automating Resource Tagging with CMDB, Ansible, and Azure
 
+![image](https://github.com/kwehen/TaggingAutomation/assets/110314567/293e7cf8-1fcf-4223-b9b4-d72e79ec164e)
+
+
 This repository contains the code used in the blog post about automating resource tagging using a Configuration Management Database (CMDB), Ansible, and Azure.
 
 ## Overview
