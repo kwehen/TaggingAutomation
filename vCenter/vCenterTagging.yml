@@ -1,0 +1,40 @@
+---
+- name: Create a tag for each category # Categories must be created before tags are assigned. 
+  community.vmware.vmware_tag:
+    hostname: '<vcenter-hostname>'
+    username: "{{ service_account }}"
+    password: "{{ service_password }}"
+    category_name: "{{ item.category_name }}"
+    tag_name: "{{ item.tag_name }}"
+    state: present
+  loop:
+    - { category_name: "{{ cost_center_cat }}", tag_name: "{{ cost_center }}" }
+    - { category_name: "{{ owned_by_cat }}", tag_name: "{{ owned_by }}" }
+    - { category_name: "{{ supp_grp_cat }}", tag_name: "{{ support_group }}" }
+    - { category_name: "{{ classification_cat }}", tag_name: "{{ classification }}" }
+    - { category_name: "{{ mang_by_cat }}", tag_name: "{{ managed_by_group }}" }
+    - { category_name: "{{ install_stat_cat }}", tag_name: "{{ install_status }}" }
+    - { category_name: "{{ bu_cat }}", tag_name: "{{ business_unit }}" }
+    - { category_name: "{{ loc_cat }}", tag_name: "{{ location }}" }
+    - { category_name: "{{ os_cat }}", tag_name: "{{ os }}" }
+  delegate_to: localhost
+  register: tag_result
+
+- name: Assign Tags to VM
+  community.vmware.vmware_tag_manager:
+    hostname: '<vcenter-hostname>'
+    username: "{{ service_account }}"
+    password: "{{ service_password }}"
+    tag_names:
+      - "{{ cost_center_cat }}:{{ cost_center }}"
+      - "{{ owned_by_cat }}:{{ owned_by }}"
+      - "{{ supp_grp_cat }}:{{ support_group }}"
+      - "{{ classification_cat }}:{{ classification }}"
+      - "{{ mang_by_cat }}:{{ managed_by_group }}"
+      - "{{ install_stat_cat }}:{{ install_status }}"
+      - "{{ bu_cat }}:{{ business_unit }}"
+      - "{{ loc_cat }}:{{ location }}"
+      - "{{ os_cat }}:{{ os }}"
+    object_name: "{{ vm_name }}"
+    object_type: VirtualMachine
+    state: set # Set will update the current tags if they have changed. 
